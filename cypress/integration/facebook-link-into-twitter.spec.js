@@ -1,0 +1,16 @@
+describe('My First Test', () => {
+     it('Visits the Kuverit', () => {
+     cy.visit('https://app.kuverit.com')
+     cy.contains('Sign In').click()
+     cy.url().should('include', '/auth/login')
+     cy.get('#identifier').type('fawad@mailinator.com').should('have.value', 'fawad@mailinator.com')
+     cy.get('#password').type('bcdapps123')
+     cy.get('.flex > .px-6').click()
+     cy.visit('https://app.kuverit.com/brs/score')
+     cy.get(':nth-child(5) > .flex-col > .text-sm > .rounded-full > svg').click()
+     cy.get('.rounded-3xl > path').click()
+     cy.wait(3000)
+     cy.get('.mt-12 > .mr-2').type('twitter.com')
+     cy.get('.py-3').click().should('not.exist')
+     })
+    })
